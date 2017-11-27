@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/27 10:46:52 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/07 23:23:20 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/09 10:38:00 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/libft.h"
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+char	*ft_strcat(char *dest, char const *src)
+{
+	int		i;
+	int		j;
 
-#endif
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	if (dest[i] == '\0')
+	{
+		dest[i] = src[j];
+		while (src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+	}
+	if (src[j] == '\0')
+		dest[i] = '\0';
+	return (dest);
+}

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/27 10:46:52 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/08 12:16:41 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/23 22:04:56 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/libft.h"
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+size_t		ft_intlen(int nb)
+{
+	int		len;
 
-#endif
+	len = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+		len++;
+	while (nb != 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
+}

@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/27 10:46:52 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/07 15:46:27 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/09 10:53:00 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/libft.h"
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+char	*ft_strncat(char *dest, char const *src, size_t nb)
+{
+	int			i;
+	size_t		j;
 
-#endif
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	if (dest[i] == '\0')
+	{
+		dest[i] = src[j];
+		while (src[j] != '\0' && j < nb)
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+	}
+	if (j == nb)
+		dest[i] = '\0';
+	if (src[j] == '\0')
+		dest[i] = '\0';
+	return (dest);
+}

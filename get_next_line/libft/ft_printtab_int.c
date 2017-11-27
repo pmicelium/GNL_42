@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printtab_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/27 10:46:52 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/08 21:00:06 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/13 23:03:22 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/libft.h"
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+void	ft_printtab_int(int **tab)
+{
+	int		j;
+	int		k;
 
-#endif
+	j = 0;
+	while (tab[j])
+	{
+		k = 0;
+		while (tab[j][k])
+		{
+			ft_putnbr(tab[j][k]);
+			k++;
+		}
+		if (tab[j])
+			ft_putchar('\n');
+		j++;
+	}
+}
