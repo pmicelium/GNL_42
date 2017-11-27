@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:42:53 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/28 00:03:25 by pmiceli          ###   ########.fr       */
+/*   Created: 2017/11/27 23:11:28 by pmiceli           #+#    #+#             */
+/*   Updated: 2017/11/28 00:19:04 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/libft.h"
+#include "get_next_line.h"
+#include "libft/libft.h"
+#include <fcntl.h>
 
-typedef struct	s_param
+int		main(int argc, const char *argv[])
 {
-	int			i;
-	char		*after;
-}				t_param;
+	char	*line;
+	int		fd;
+	int		i;
+	int		res;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	fd = open(argv[1], O_RDONLY);
+	while ((res = get_next_line(fd, &line)) != 0)
+	{
+		ft_putstr_color(line, "grey");
+		i++;
+		ft_putnbr_endl(res);
+	}
+	return (0);
+}

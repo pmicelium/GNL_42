@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 10:46:55 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/28 00:01:15 by pmiceli          ###   ########.fr       */
+/*   Updated: 2017/11/27 23:43:22 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static int		ft_buff_check(char *buff, t_param *param)
 {
 	param->i = 0;
-	while (param->i < BUFF_SIZE)
+	while (buff[param->i])
 	{
 		if (buff[param->i] == '\n')
 			return (1);
@@ -37,22 +37,22 @@ static char		*ft_before_after(char *buff, t_param *param, char *line)
 	char	*before;
 
 	j = 0;
-	if (buff[BUFF_SIZE - 1] == '\n')
+	if (buff[BUFF_SIZE - 2] == '\n')
 		return (ft_strjoin_free(line, buff));
 	if (!(before = (char *)malloc(sizeof(char) * param->i + 1)))
 		return (NULL);
 	if (!(param->after = (char *)malloc(sizeof(char) *
-					(BUFF_SIZE - param->i - 1))))
+					(ft_strlen(buff) - param->i - 1))))
 		return (NULL);
 	i = 0;
-	while (buff[i] != '\n' && i < BUFF_SIZE)
+	while (buff[i] != '\n')
 	{
 		before[i] = buff[i];
 		i++;
 	}
 	before[i] = buff[i];
 	i++;
-	while (i < BUFF_SIZE)
+	while (buff[i])
 		param->after[j++] = buff[i++];
 	return (ft_strjoin_free(line, before));
 }
@@ -67,8 +67,9 @@ int				get_next_line(const int fd, char **line)
 			|| (!(fd)))
 		return (-1);
 	*line = ft_strjoin("\0", param.after);
-	while ((ret = read(fd, buff, BUFF_SIZE)))
+	while ((ret = read(fd, buff, BUFF_SIZE - 1)))
 	{
+		buff[ret] = '\0';
 		if (ft_buff_check(buff, &param) == 1)
 		{
 			*line = ft_before_after(buff, &param, *line);
