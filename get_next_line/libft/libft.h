@@ -6,7 +6,7 @@
 /*   By: pmiceli <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 14:55:34 by pmiceli           #+#    #+#             */
-/*   Updated: 2017/11/27 21:14:11 by pmiceli          ###   ########.fr       */
+/*   Updated: 2017/11/28 21:02:02 by pmiceli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void				ft_lstdel(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_putnbr_endl(int nb);
 void				ft_printlst_char(t_list *chain);
+void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_putendl_background(char *str, char *color);
 void				ft_putstr_color(char *str, char *color);
 void				ft_putstr_background(char *str, char *color);
@@ -85,6 +86,7 @@ char				*ft_strncpy(char *dest, char const *src, size_t n);
 char				*ft_strnstr(char const *src, char const *find, size_t len);
 char				*ft_strchr(char const *s, int c);
 char				*ft_strrchr(char const*s, int c);
+char				*ft_strchr_rev(char const *s, int c);
 char				*ft_strncat(char *dest, char const *src, size_t nb);
 char				*ft_itoa(int nb);
 char				*ft_strnew(size_t size);
@@ -96,6 +98,5 @@ char				*ft_strjoin_free(char *s1, char *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 #endif
