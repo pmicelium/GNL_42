@@ -15,6 +15,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# define TEST ft_putendl_color("TEST", "cyan");
+# define NL ft_putchar('\n');
 
 typedef struct		s_list
 {

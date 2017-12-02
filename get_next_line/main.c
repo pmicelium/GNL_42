@@ -27,13 +27,15 @@ int		main(int argc, const char *argv[])
 	while (res > 0 && i < 30)
 	{
 		res = get_next_line(fd, &line);
-		if (res != 0)
+		ft_putnbr(res);
+		ft_putstr_color("|", "red");
+		if (res > 0)
 		{
-			ft_putstr(line);
+			ft_putstr_color(line, "yellow");
 			ft_putstr_color("|", "red");
 		}
+		NL;
 		i++;
-		ft_putnbr_endl(res);
 	}
 
 	return (0);
